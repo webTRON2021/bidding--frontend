@@ -9,17 +9,21 @@
   font-size: 14px;
   background-color: $primary_bg_color !important;
 }
+
 html,
 body {
   background-color: $primary_bg_color !important;
 }
+
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
+
 p {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 // * for scroll bar
 ::selection {
   color: $primary-color;
@@ -30,6 +34,7 @@ p {
   width: 5px;
   height: 5px;
 }
+
 ::-webkit-scrollbar-track {
   background: white;
 }

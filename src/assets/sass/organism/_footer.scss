@@ -1,26 +1,120 @@
 .footer_section {
   background: #1d1e20;
   color: white;
-  .footer_contain {
-    padding: 1.75rem 0;
-    .title_text {
-      font-size: 17px;
-      color: $primary_color;
+  position: relative;
+  border-top: 1px solid lightgray;
+  padding-bottom: 1rem;
+  height: 100%;
+  margin-top: 5rem;
+
+  .getQuote_footer {
+    position: absolute;
+    top: -8%;
+    left: 0;
+    right: 0;
+    transition: 0.5s ease;
+    border-radius: 0.2rem;
+
+    .bg_getQuote {
+      background: white;
+      padding: 0.8rem 1rem .6rem 1rem;
+      border-radius: .2rem;
+      outline: 1px solid $primary-color;
     }
-    .items {
-      padding-top: 0.75rem;
-      .item {
-        display: flex;
-        gap: 0.5rem;
-        padding: 0.25rem 0rem;
-        svg {
-          margin-bottom: 0.3rem;
+
+    .getQuote_title {
+      font-size: 15px;
+      font-weight: 500;
+      padding-top: 0.5rem;
+      color: black;
+      text-transform: uppercase;
+    }
+
+    .getQuote_subTitle {
+      color: black;
+      font-size: 16px;
+      padding-right: 0.5rem;
+    }
+
+    .call_btn {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+
+    }
+  }
+
+  .footer_container {
+    .footer_box.border_Left {
+      height: 100%;
+      border-left: 1px solid lightgray !important;
+      padding-left: 1rem;
+    }
+
+    .footer_box {
+      margin-top: 1rem;
+
+      .title_text {
+        color: $primary_color;
+        font-size: 18px;
+      }
+
+      .footer_v2_border {
+        width: 3rem;
+      }
+
+      .footer_items {
+        padding-top: 1rem;
+
+        .footer_item {
+          font-size: 15px;
+          display: block;
+          padding: 0.25rem 0;
         }
       }
     }
+
+    .footer_items {
+      .footer_item {
+        a {
+          color: white;
+        }
+
+        padding-bottom: .2rem;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .footer_box.border_Left {
+        border-left: none !important;
+        padding-left: 0rem;
+      }
+    }
   }
+
+  @media screen and (max-width:991px) {
+    .getQuote_footer_v2 {
+      position: static;
+    }
+
+    .getQuote_title {
+      text-align: center;
+    }
+
+    .call_btn {
+      flex-direction: column;
+      margin-top: 1rem;
+      justify-content: center !important;
+
+      button {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
   .copyright_contain {
-    border-top: 1px solid whitesmoke;
+    border-top: 1px solid lightgray;
+    margin-top: 3rem;
     padding: 1.25rem 0;
     text-align: center;
   }
