@@ -1,0 +1,23 @@
+.input_section {
+  .input_box {
+    border: 1px solid $primary_color;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.2rem;
+    width: 100%;
+    .icon {
+      svg {
+        font-size: 20px;
+        color: $primary_color;
+      }
+    }
+    input {
+      background: transparent !important;
+      outline: none !important;
+      border: none !important;
+      width: 100% !important;
+      padding: 0 !important;
+    }
+  }
+}

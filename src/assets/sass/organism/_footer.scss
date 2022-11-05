@@ -1,0 +1,27 @@
+.footer_section {
+  background: #1d1e20;
+  color: white;
+  .footer_contain {
+    padding: 1.75rem 0;
+    .title_text {
+      font-size: 17px;
+      color: $primary_color;
+    }
+    .items {
+      padding-top: 0.75rem;
+      .item {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.25rem 0rem;
+        svg {
+          margin-bottom: 0.3rem;
+        }
+      }
+    }
+  }
+  .copyright_contain {
+    border-top: 1px solid whitesmoke;
+    padding: 1.25rem 0;
+    text-align: center;
+  }
+}
