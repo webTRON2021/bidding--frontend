@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -11,4 +12,28 @@
 html,
 body {
   background-color: $primary_bg_color !important;
+}
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+// * for scroll bar
+::selection {
+  color: $primary-color;
+  background: white;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary_color;
 }
