@@ -1,13 +1,11 @@
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import Title from "../atoms/Title";
 import {
-  AiFillFacebook,
-  AiFillInstagram,
-  AiFillTwitterSquare, AiOutlineMobile
+  AiOutlineMobile
 } from "react-icons/ai";
-import { FaBlogger } from "react-icons/fa";
 import Button from "../atoms/Button";
 import { Link } from "react-router-dom";
+
 export default () => {
   return (
     <section className="footer_section mt-5">
