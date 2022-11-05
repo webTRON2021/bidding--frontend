@@ -13,10 +13,16 @@ export default () => {
         <div className="pt-5">
           <Heading text="More Bids for You" />
           <div className="pt-3"></div>
-          {[1, 1, 1, 1].map((item, index) => {
-            return <CardTwo />;
-          })}
-          <div className="pt-2 d-flex justify-content-center">
+          <div className="row">
+            {[1, 1, 1, 1].map((item, index) => {
+              return (
+                <div className="col-md-6 col-12">
+                  <CardTwo />
+                </div>
+              )
+            })}
+          </div>
+          <div className="pt-3 d-flex justify-content-center">
             <Button variant="secondary" className="p-5" useFor="pagination">
               Load More
             </Button>
