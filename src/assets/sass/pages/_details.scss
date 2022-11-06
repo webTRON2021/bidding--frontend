@@ -1,0 +1,50 @@
+.details_page_section {
+    .image {
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: .2rem;
+            transition: .2s ease;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .title_text {
+        font-weight: 500;
+    }
+
+    .details {
+        .items {
+            padding-top: 1rem;
+
+            .item {
+                padding-bottom: .5rem;
+            }
+
+            .bid_input {
+                .input_box {
+                    border: 1px solid $secondary_color;
+
+                    .icon {
+                        svg {
+                            color: $secondary_color;
+                        }
+                    }
+                }
+            }
+
+            .logo {
+                img {
+                    width: 60px;
+                    height: 15px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

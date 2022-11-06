@@ -1,0 +1,61 @@
+.button_section {
+  button {
+    padding: 0.4rem 0.75rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .primary_btn {
+    background: $primary_color;
+    color: black !important;
+    outline: 1px solid $primary_color;
+    &:hover {
+      background: $primary_hover_color;
+    }
+  }
+  .secondary_btn {
+    background: $secondary_color;
+    color: white;
+    outline: 1px solid $secondary_color;
+    &:hover {
+      background: $secondary_hover_color;
+    }
+  }
+  .primary_outline_btn {
+    background: transparent;
+    outline: 1px solid $primary_color;
+    color: $primary_color !important;
+    &:hover {
+      color: white !important;
+      background: $primary_hover_color;
+    }
+  }
+  .secondary_outline_btn {
+    background: transparent;
+    outline: 1px solid $secondary_color;
+    color: $secondary_color !important;
+    &:hover {
+      color: white !important;
+      background: $secondary_hover_color;
+    }
+  }
+  .primary_white_outline_btn {
+    background: transparent;
+    outline: 1px solid white;
+    color: white;
+    &:hover {
+      background: $primary_color;
+      outline: 1px solid $primary_color;
+      color: black;
+    }
+  }
+}
+.button_section.pagination_btn {
+  button {
+    padding: 0.4rem 1.75rem;
+  }
+}

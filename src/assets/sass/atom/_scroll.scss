@@ -1,0 +1,20 @@
+.scroll_box {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    z-index: 9999999;
+    span {
+        color: $secondary_color;
+        svg {
+            font-size: 1.8rem; 
+            color: $secondary_color;
+            background-color: white;
+            border-radius: 50%;
+            &:hover { 
+                animation-duration: 0.2s;
+                outline: 1px solid white;
+                cursor: pointer;
+            }
+        }
+    }
+}

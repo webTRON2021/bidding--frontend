@@ -1,0 +1,48 @@
+.contact_section {
+    position: relative;
+    padding-top: 2rem;
+
+    .title_text {
+        color: $secondary_color;
+        font-size: 20px;
+    }
+
+    .contact_form {
+        .input_section {
+            .input_box {
+                border: 1px solid $secondary_color;
+                background-color: #FFFFFF;
+
+                .icon {
+                    svg {
+                        color: $secondary_color;
+                    }
+                }
+            }
+        }
+
+        textarea {
+            border: 1px solid $secondary_color;
+            background-color: #FFFFFF;
+        }
+
+        button {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    a {
+        color: black;
+    }
+
+    .contact_option {
+        padding-top: 2.5rem;
+
+        svg {
+            font-size: 18px;
+            margin-right: .2rem;
+            margin-bottom: .2rem;
+        }
+    }
+}

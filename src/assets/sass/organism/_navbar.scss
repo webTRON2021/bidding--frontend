@@ -1,0 +1,60 @@
+.navbar_section {
+  background: $secondary_color;
+  color: white;
+  padding: 0.5rem 0;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  .navbar_box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+
+    //logo
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      img {
+        height: 50px;
+        object-fit: contain;
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+
+    // search
+    .input_section {
+      .input_box {
+        width: 400px;
+        border: 1px solid $primary_color;
+
+        input {
+          color: white;
+
+          &::placeholder {
+            color: $primary_color;
+          }
+        }
+
+        .icon {
+          svg {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

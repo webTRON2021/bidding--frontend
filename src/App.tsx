@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// custom scss
+import "./assets/sass/main.scss";
+// toast scss
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+// routes
+import Routes from "./routes";
+import Scroll from "./UI/atoms/Scroll";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <Routes />
+      <Scroll />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        draggable
+        theme="light"
+      />
+    </section>
   );
 }
 

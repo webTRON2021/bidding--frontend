@@ -1,0 +1,29 @@
+.auth_template_section{
+    min-height: 100vh;
+    background-color: $primary_bg_color; 
+    
+}
+
+.login_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .input_box{
+        width: 30rem !important;
+        // color: $secondary_color !important;
+
+    }
+
+    button{
+        width: 100%;
+    }
+
+    .forgetPassword{
+        a{
+            color: #000;
+            text-decoration: none;
+        }
+    }
+}
+

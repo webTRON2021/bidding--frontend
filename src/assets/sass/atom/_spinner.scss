@@ -1,0 +1,73 @@
+.spinner_section {
+  padding-top: 0.25rem;
+  /* variables */
+  $spinner-animation-time-per-turn: 1s;
+  $spinner-width: 5px;
+  $spinner-height: 5px;
+  $spinner-default-color: #000;
+  $colors: (
+    "green": white,
+  );
+
+  /* mixins and operations */
+  @mixin flex($t, $j, $a) {
+    display: flex;
+    flex-flow: $t wrap;
+    justify-content: $j;
+    align-items: $a;
+  }
+
+  @each $color, $code in $colors {
+    .bg-#{$color} {
+      background: $code !important;
+    }
+  }
+
+  @each $color, $code in $colors {
+    .border-spinner-#{$color} {
+      border-top-color: $code !important;
+      border-left-color: $code !important;
+      border-right-color: $code !important;
+    }
+  }
+
+  .parent-spinner {
+    width: 100%;
+    @include flex(row, center, center);
+  }
+
+  .spinner-rotate {
+    padding: 0.3rem;
+    border-top: 3px solid $spinner-default-color;
+    border-left: 3px solid $spinner-default-color;
+    border-right: 3px solid $spinner-default-color;
+    border-bottom: 3px solid transparent;
+    border-radius: 50%;
+    background: none;
+    animation: spinner-rotate linear $spinner-animation-time-per-turn infinite;
+    margin: 0px;
+  }
+
+  /* animations */
+  @keyframes spinner {
+    from {
+      transform: scale(0);
+      opacity: 1;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+  @keyframes spinner-rotate {
+    from {
+      transform: rotateZ(0);
+    }
+
+    to {
+      transform: rotateZ(1turn);
+    }
+  }
+}
