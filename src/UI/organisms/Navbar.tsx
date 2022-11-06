@@ -8,8 +8,12 @@ import { useNavigate, Link } from "react-router-dom";
 export default () => {
   const navigate = useNavigate();
   // function to search 
-  const handleSubmit = (e: any) => {
+  const handleSubmitSearch = (e: any) => {
     navigate("/products");
+  }
+  // function to login 
+  const handleSubmitLogin = (e: any) => {
+    navigate("/auth");
   }
   return (
     <section className="navbar_section">
@@ -21,7 +25,7 @@ export default () => {
               <div className="title">Tinjure Auction</div>
             </div>
           </Link>
-          <Form onSubmit={(e) => { handleSubmit(e) }}>
+          <Form onSubmit={(e) => { handleSubmitSearch(e) }}>
             <div className="d-flex gap-2">
               <Input icon={<BiSearch />} placeholder="Search here"></Input>
               <Button>Search Bids</Button>
@@ -29,7 +33,9 @@ export default () => {
           </Form>
           <div className="">
             <div className="d-flex gap-2">
-              <Button variant="primary" loading={false}>
+              <Button variant="primary" loading={false}
+              onClick={handleSubmitLogin}
+              >
                 Login
               </Button>
               <Button variant="primary_white_outline" loading={false}>
