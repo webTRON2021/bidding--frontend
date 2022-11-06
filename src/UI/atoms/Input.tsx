@@ -5,6 +5,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
   variant?: string;
   error?: boolean;
+  label?:string;
 }
 
 export default ({ icon, children, variant, ...rest }: InputProps) => {
