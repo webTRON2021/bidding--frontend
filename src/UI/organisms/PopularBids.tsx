@@ -7,9 +7,9 @@ export default () => {
       <Heading text="Popular Bids"></Heading>
       <div className="pt-3">
         <div className="row">
-          {[1, 1].map((item, index) => {
+          {[1, 1, 1].map((item, index) => {
             return (
-              <div className="col-md-6 col-12 mb-3">
+              <div className="col-md-4 col-12 mb-3">
                 <CardOne />
               </div>
             );

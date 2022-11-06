@@ -26,12 +26,14 @@ export default ({ icon, children, variant, ...rest }: InputProps) => {
             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
           </div>
         </div>
-      ) : (
-        <div className="input_box">
-          <div className="icon">{icon}</div>
-          <input type={variant} {...rest} />
-        </div>
-      )}
-    </section>
+      )
+        : (
+          <div className="input_box">
+            <div className="icon">{icon}</div>
+            <input type={variant} {...rest} />
+          </div>
+        )
+      }
+    </section >
   );
 };

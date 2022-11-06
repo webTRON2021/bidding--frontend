@@ -5,11 +5,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 // routes
 import Routes from "./routes";
+import Scroll from "./UI/atoms/Scroll";
 
 function App() {
   return (
     <section>
       <Routes />
+      <Scroll />
       <ToastContainer
         position="top-right"
         autoClose={2000}

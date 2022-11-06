@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Images from "../../config/constant/Images";
 import Button from "../atoms/Button";
 import Title from "../atoms/Title";
@@ -24,7 +25,9 @@ export default () => {
           </div>
         </div>
         <div className="py-1"></div>
-        <Button>View Details</Button>
+        <Link to="/product-details">
+          <Button>View Details</Button>
+        </Link>
       </div>
     </section>
   );
