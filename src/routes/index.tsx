@@ -8,6 +8,7 @@ import Product from "../UI/pages/Product";
 import MainLayout from "../UI/templates/MainLayout";
 import AddProductForm from "../UI/molecules/AddProductForm";
 import SignUp from "../UI/atoms/SignUp";
+import PageNotFound from "../UI/pages/PageNotFound";
 export default () => {
   return (
     <BrowserRouter>
@@ -23,6 +24,8 @@ export default () => {
           <Route path="/product-details" element={<Details />} />
           <Route path="/add-product" element={<AddProductForm />} />
         </Route>
+        {/* for 404 page not found page */}
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );
