@@ -71,8 +71,9 @@ const useBid = () => {
   const postBidToken = async (
     body: FormData
   ): Promise<Response<String>> => {
+    console.log("postBidToken",body);
     try {
-      await PrivateAxios.post(`/client/bid/token`, {
+      await PrivateAxios.post(`/client/bid/token`,body, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -96,6 +97,7 @@ const useBid = () => {
   return {
     findBids,
     updateBidStatus,
+    postBidToken
   };
 };
 

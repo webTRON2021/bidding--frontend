@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { user,setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   // function to search
   const handleSubmitSearch = (e: any) => {
@@ -22,18 +22,14 @@ const Navbar = () => {
 
   console.log(user);
 
-  const handleSignOut=()=>{
+  const handleSignOut = () => {
     setUser(null);
     navigate("/");
+  };
 
-  } 
-
-
-  
-
- const handleClickRegistration =()=>{
-  navigate("/auth/sign-up");
- }
+  const handleClickRegistration = () => {
+    navigate("/auth/sign-up");
+  };
   return (
     <section className="navbar_section">
       <div className="container-fluid">
@@ -54,7 +50,8 @@ const Navbar = () => {
               <Button>Search Bids</Button>
             </div>
           </Form>
-          {user?.token ? <div className="">
+          {user?.token ? (
+            <div className="">
               <div className="d-flex gap-2">
                 <Button
                   variant="primary"
@@ -64,20 +61,9 @@ const Navbar = () => {
                   Sign out
                 </Button>
               </div>
-            <div className="d-flex gap-2">
-              <Button variant="primary" loading={false}
-              onClick={handleSubmitLogin}
-              >
-                Login
-              </Button>
-              <Button variant="primary_white_outline" loading={false}
-              onClick={handleClickRegistration}
-              >
-                Registration
-              </Button>
             </div>
-            </div>
-           : <div className="">
+          ) : (
+            <div className="">
               <div className="d-flex gap-2">
                 <Button
                   variant="primary"
@@ -91,7 +77,7 @@ const Navbar = () => {
                 </Button>
               </div>
             </div>
-          }
+          )}
         </div>
       </div>
     </section>
