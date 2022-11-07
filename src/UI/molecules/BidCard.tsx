@@ -1,16 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Images from "../../config/constant/Images";
 import Bid from "../../models/Bids";
 import Button from "../atoms/Button";
 import Title from "../atoms/Title";
+
 
 interface IProps {
   bid?: Bid;
 }
 
 export default (props: IProps) => {
+  const navigate = useNavigate();
+
+  const handleViewDetails = ()=>{
+    
+    navigate("/product-details",{state:bid!});
+  }
   const { bid } = props;
-  console.log(bid);
+  
+  
   return (
     <section className="card">
       <div className="cover_image">
@@ -33,9 +41,10 @@ export default (props: IProps) => {
           </div>
         </div>
         <div className="py-1"></div>
-        <Link to="/product-details">
-          <Button>View Details</Button>
-        </Link>
+          <Button
+          onClick={handleViewDetails}
+          >View Details</Button>
+        
       </div>
     </section>
   );
