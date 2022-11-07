@@ -9,8 +9,10 @@ import {FaUser} from "react-icons/fa";
 import DetailsRunningBids from "../molecules/DetailsRunningBids"
 import { useLocation } from "react-router-dom"
 import Creative from '../../models/Creative';
+import useScrollTop from '../../hooks/useScrollTop';
 
 export default () => {
+    useScrollTop();
 
     const location = useLocation();
     const bid = location.state;
@@ -75,7 +77,7 @@ export default () => {
                     </div>
                 </div>
                 <div className="details_bids col-md-4 col-12">
-                    {/* <DetailsRunningBids/> */}
+                    <DetailsRunningBids/>
                 </div>
             </div>
         </div>
