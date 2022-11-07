@@ -60,7 +60,7 @@ const AuthProvider= ({ children }: Props) => {
       };
     }
   };
-  //* function to login
+  //* function to signup
   const signup = async (data:FormData) => {
     try {
       const res = await AxiosInstance.post("/client/auth/signup", data);
