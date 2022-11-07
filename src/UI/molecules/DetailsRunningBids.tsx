@@ -4,8 +4,8 @@ import Title from "../atoms/Title";
 import { useLocation } from "react-router-dom";
 import db  from "../../config/dbConfig";
 import { useEffect, useState } from "react";
-import Bid from "../../models/Bids";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+import Bid from "../../models/Bid";
 
 
 export default () => {

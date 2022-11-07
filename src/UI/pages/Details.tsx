@@ -12,7 +12,6 @@ import payment from "../../config/khalti";
 import { useRef } from "react";
 import {FaUser} from "react-icons/fa";
 import DetailsRunningBids from "../molecules/DetailsRunningBids"
-import { useLocation } from "react-router-dom"
 import Creative from '../../models/Creative';
 import useScrollTop from '../../hooks/useScrollTop';
 

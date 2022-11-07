@@ -29,7 +29,7 @@ const Navbar = () => {
   } 
 
 
-  }
+  
 
  const handleClickRegistration =()=>{
   navigate("/auth/sign-up");
@@ -54,8 +54,7 @@ const Navbar = () => {
               <Button>Search Bids</Button>
             </div>
           </Form>
-          {user?.token ? (
-            <div className="">
+          {user?.token ? <div className="">
               <div className="d-flex gap-2">
                 <Button
                   variant="primary"
@@ -65,7 +64,6 @@ const Navbar = () => {
                   Sign out
                 </Button>
               </div>
-          <div className="">
             <div className="d-flex gap-2">
               <Button variant="primary" loading={false}
               onClick={handleSubmitLogin}
@@ -78,8 +76,8 @@ const Navbar = () => {
                 Registration
               </Button>
             </div>
-          ) : (
-            <div className="">
+            </div>
+           : <div className="">
               <div className="d-flex gap-2">
                 <Button
                   variant="primary"
@@ -93,7 +91,7 @@ const Navbar = () => {
                 </Button>
               </div>
             </div>
-          )}
+          }
         </div>
       </div>
     </section>
