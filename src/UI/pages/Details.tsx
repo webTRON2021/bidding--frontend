@@ -80,7 +80,7 @@ const Details = () => {
               <img src={bid?.creative[0]?.src} alt="product image" />
             </div>
           </div>
-          <div className="col-md-5 col-12">
+          <div className="col-md-4 col-12">
             <div className="details">
               <Title text={bid.name} />
               <div className="items">
@@ -137,7 +137,7 @@ const Details = () => {
               </div>
             </div>
           </div>
-          <div className="details_bids col-md-4 col-12">
+          <div className="details_bids col-md-5 col-12">
                     <DetailsRunningBids/>
                 </div>
         </div>
