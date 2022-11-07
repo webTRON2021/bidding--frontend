@@ -60,10 +60,36 @@ const AuthProvider= ({ children }: Props) => {
       };
     }
   };
+  //* function to login
+  const signup = async (data:FormData) => {
+    try {
+      const res = await AxiosInstance.post("/client/auth/signup", data);
+
+      // *Decrypt the token and set the user
+      const payload = JSON.parse(atob(res.data.token.split(".")[1]));
+      setUser({
+        ...res.data,
+        ...payload,
+      });
+      return {
+        success: true,
+        message: res.data.message,
+      };
+    } catch (error: any) {
+      console.log(error);
+      return {
+        success: false,
+        message: error.response.data
+          ? error.response.data.message
+          : error.message,
+      };
+    }
+  };
 
   return (
     <AuthContext.Provider
       value={{
+        signup,
         login,
         user,
         setUser,
