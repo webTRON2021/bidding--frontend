@@ -72,7 +72,9 @@ const Navbar = () => {
                 >
                   Login
                 </Button>
-                  <Button variant="primary_white_outline" loading={false} onClick={ handleClickRegistration}>
+                <Button variant="primary_white_outline" loading={false}
+                onClick={handleClickRegistration}
+                >
                   Registration
                 </Button>
               </div>
