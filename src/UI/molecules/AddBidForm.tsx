@@ -1,16 +1,52 @@
 import { Formik } from "formik";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { AddProductSchema } from "../../config/schema/AddProductSchema";
+import useBid from "../../hooks/useBid";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import Textarea from "../atoms/Textarea";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const [loading, setLoading] = useState(false);
+  const [images, setImages] = useState<FileList>();
 
-  const handleSubmit = () => {
-    console.log("This is add product");
+  const {postBid}=useBid();
+
+  const handleSubmit = async(values: any) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("bidStory", values.bidStory);
+    formData.append("brand", values.brand);
+    formData.append("category", values.category);
+    formData.append("endDate", values.endDate);
+    formData.append("initialToken", values.initialToken);
+    formData.append("minimumTokenRaise", values.minimumTokenRaise);
+    formData.append("name", values.name);
+    formData.append("specification", values.specification);
+    formData.append("startDate", values.startDate);
+    formData.append("tokenCurrency", values.tokenCurrency);
+    // formData.append("bidProductImage", images)
+
+    console.log(images);
+    console.log(Array(images?.length));
+    
+    Array(images).forEach((_,index)=>{
+      console.log(index);
+      formData.append("bidProductImage", images?.item(index)!)
+    })
+
+    const response=await postBid(formData);
+
+    if(response.error){
+      toast.error(response.error);
+    }else{
+      toast.success(response.data);
+    }
+    setLoading(false);
+
   };
 
   return (
@@ -42,7 +78,9 @@ export default () => {
             >
               <div className="addproduct_form">
                 <div className="row pt-2">
-                  <div className="col-md-4 col-sm-6 col-12 mb-4">
+                  <h4 className="mb-2">Add Bid</h4>
+
+                  <div className="col-md-4 col-sm-6 col-12 mb-4 mt-2">
                     <Input
                       type="text"
                       placeholder="Enter name of product"
@@ -144,51 +182,68 @@ export default () => {
                       onChange={handleChange}
                       name="brand"
                       value={values.brand}
+                      label="Brand"
                     ></Input>
                     <small className="input_suggestion_error">
                       {errors.brand}
                     </small>
                   </div>
+                  <div className="col-md-4 col-sm-6 col-12 mb-4">
+                    <label htmlFor="file">Bid Product Image</label>
+                    <Input
+                      id="file"
+                      type="file"
+                      placeholder="Bid Product Image"
+                      onChange={(e) => {
+                        if (e.target.files) setImages(e.target.files);
+                      }}
+                      multiple
+                      max={3}
+                      maxLength={3}
+                      name="bidProductImage"
+                      label="Bid Product Image"
+                    ></Input>
+                  </div>
                   <div className="row pt-2">
-                  <div className="col-lg-6 col-md-6 col-12 mb-3">
-                    <Textarea
-                      placeholder="Enter Specification"
-                      error={errors.specification === undefined ? false : true}
-                      onChange={handleChange}
-                      name="specification"
-                      value={values.specification}
-                    ></Textarea>
-                    <small className="input_suggestion_error">
-                      {errors.specification}
-                    </small>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-12 mb-3">
-                    <Textarea
-                      placeholder="Enter Product Description"
-                      error={errors.bidStory === undefined ? false : true}
-                      onChange={handleChange}
-                      name="bidStory"
-                      value={values.bidStory}
+                    <div className="col-lg-6 col-md-6 col-12 mb-3">
+                      <Textarea
+                        placeholder="Enter Specification"
+                        error={
+                          errors.specification === undefined ? false : true
+                        }
+                        onChange={handleChange}
+                        name="specification"
+                        value={values.specification}
                       ></Textarea>
-                    <small className="input_suggestion_error">
-                      {errors.bidStory}
-                    </small>
-                  </div>
-                      </div>
+                      <small className="input_suggestion_error">
+                        {errors.specification}
+                      </small>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-12 mb-3">
+                      <Textarea
+                        placeholder="Enter Product Description"
+                        error={errors.bidStory === undefined ? false : true}
+                        onChange={handleChange}
+                        name="bidStory"
+                        value={values.bidStory}
+                      ></Textarea>
+                      <small className="input_suggestion_error">
+                        {errors.bidStory}
+                      </small>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="py-1"></div>
-                <div className="d-flex justify-content-end gap-3">
-                  <Button
-                      loading={loading}
-                    type="submit"
-                    //   onClick={handleActiveValidation}
-                  >
-                    Submit
-                  </Button>
-                </div>
-              
+              <div className="py-1"></div>
+              <div className="d-flex justify-content-end gap-3">
+                <Button
+                  loading={loading}
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </div>
             </Form>
           );
         }}

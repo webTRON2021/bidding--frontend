@@ -16,8 +16,8 @@ const NavBar = () => {
             >
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/add-product"
-            active={location.pathname==="/add-product"}
+            <Nav.Link as={Link} to="/add-bid"
+            active={location.pathname==="/add-Bid"}
             >
               Add Bid
             </Nav.Link>

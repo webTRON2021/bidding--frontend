@@ -49,7 +49,7 @@ const Login=() => {
 
     } else {
       toast.dismiss();
-      toast.error(res.message[0]);
+      toast.error(res.message);
     }
 
     // if remember me check is checked then store email and password on local
