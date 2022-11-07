@@ -6,18 +6,22 @@ import Login from "../UI/pages/Login";
 import AuthTemplate from "../UI/templates/AuthTemplate";
 import Product from "../UI/pages/Product";
 import MainLayout from "../UI/templates/MainLayout";
+import AddProductForm from "../UI/molecules/AddProductForm";
+import SignUp from "../UI/atoms/SignUp";
 export default () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/auth" element={<AuthTemplate />}>
-          <Route path="" element={<Login />} />{" "}
+          <Route path="" element={<Login />} />
+          <Route path="sign-up" element={<SignUp />} />
         </Route>
         <Route path="" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Product />} />
           <Route path="/product-details" element={<Details />} />
+          <Route path="/add-product" element={<AddProductForm />} />
         </Route>
       </Routes>
     </BrowserRouter>
