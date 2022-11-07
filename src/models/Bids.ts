@@ -1,5 +1,6 @@
 import { plainToClass } from "class-transformer";
 import Creative from "./Creative";
+import Products from "./Products";
 
 class Meta {
     highestToken: HighestToken;
@@ -24,7 +25,7 @@ class HighestToken {
 
 class Bid {
 
-
+    // products:Products[];
     _id: string;
     statusMessage: string;
     initialToken: string;
@@ -44,6 +45,7 @@ class Bid {
 
     constructor(
         id: string,
+        // products: Products[],
         statusMessage: string,
         initialToken: string,
         endDate: Date,
@@ -61,6 +63,7 @@ class Bid {
         name: string
     ) {
         this._id = id
+        // this.products = products
         this.statusMessage = statusMessage
         this.initialToken = initialToken
         this.endDate = endDate
