@@ -12,6 +12,7 @@ import payment from "../../config/khalti";
 import useScrollTop from "../../hooks/useScrollTop";
 import useBid from "../../hooks/useBid";
 import { toast } from "react-toastify";
+import DetailsRunningBids from "../molecules/DetailsRunningBids";
 
 const Details = () => {
   const location = useLocation();
@@ -136,9 +137,9 @@ const Details = () => {
               </div>
             </div>
           </div>
-          {/* <div className="details_bids col-md-4 col-12">
+          <div className="details_bids col-md-4 col-12">
                     <DetailsRunningBids/>
-                </div> */}
+                </div>
         </div>
       </div>
       <div className="pt-5">
