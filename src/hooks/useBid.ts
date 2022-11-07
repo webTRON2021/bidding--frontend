@@ -1,5 +1,6 @@
 import PrivateAxios from "../api/PrivateAxios";
 import Bid from "../models/Bid";
+import UserToken from "../models/UserToken";
 import Response from "../types/response";
 
 const useBid = () => {
@@ -22,6 +23,26 @@ const useBid = () => {
       return data;
     }
   };
+  const getTokensByUserForBid = async (bidID:string,users:string[]): Promise<Response<UserToken[]>> => {
+    try {
+        const response = await PrivateAxios.get(`admin/bid/token/info/by/users/for/bid?users=${JSON.stringify(users)}&bidId=${bidID}`);
+        const userTokens = UserToken.plainToInstances(response.data.tokens)
+        const data: Response<UserToken[]> = {
+            data: userTokens,
+            error: null
+        }
+        return data;
+    } catch (err: any) {
+        console.log(err);
+        const data: Response<UserToken[]> = {
+            data: null,
+            error: err.response.data.message
+        }
+        return data;
+    }
+
+};
+
   const updateBidStatus = async (
     bidID: string,
     body: FormData
