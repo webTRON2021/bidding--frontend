@@ -9,18 +9,16 @@ import { useLocation } from "react-router-dom";
 import Timer from "../atoms/Timer";
 import Bid from "../../models/Bid";
 import payment from "../../config/khalti";
-import { useRef } from "react";
-import {FaUser} from "react-icons/fa";
-import DetailsRunningBids from "../molecules/DetailsRunningBids"
-import Creative from '../../models/Creative';
-import useScrollTop from '../../hooks/useScrollTop';
+import useScrollTop from "../../hooks/useScrollTop";
+import useBid from "../../hooks/useBid";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const location = useLocation();
   const bid: Bid = location.state;
+  const { postBidToken } = useBid();
 
-    useScrollTop();
-
+  useScrollTop();
 
   // payment option icon
   const paymentOption = [
@@ -32,27 +30,44 @@ const Details = () => {
     Images.visacard,
   ];
 
+  console.log(bid);
   const placeBidHandler = () => {
     // ! Do not use this approach in production
     const bidAmount = document.getElementById("bidAmount") as HTMLInputElement;
     const bidAmountValue = bidAmount.value;
+
     payment(
       bid._id,
       bid.name,
       `https://tinuresuppliers.com.np/bids/${bid._id}`,
-      (payload:any) => {
+      (payload: any) => {
         // *Request data to the server
-        // const response
+        const body = new FormData();
+        body.append("transactionId", payload.token);
+        body.append("bidId", bid._id);
+        body.append("amount", bidAmountValue);
+        
+        console.log(payload);
+        console.log(JSON.stringify(body));
 
-
+        postBidToken(body).then((response) => {
+          console.log(response);
+          if (!response.error) {
+            toast.error("Bid placed successfully");
+          } else {
+            toast.error(response.error);
+          }
+        });
       },
       (error: any) => {
-        console.log(error);
+        toast.error(error.toString());
       },
       () => {}
     ).show({
       amount: +bidAmountValue * 100,
     });
+
+    bidAmount.value = "";
   };
 
   return (
