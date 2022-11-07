@@ -36,7 +36,7 @@ export default () => {
       <Heading text="More Bids for You" />
       <div className="pt-3"></div>
       <div className="row">
-        {bids.map((bid, index) => {
+        {bids?.map((bid, index) => {
           return (
             <div className="col-md-6 col-12">
               <HorizontalBidCard bid={bid} />
@@ -48,7 +48,6 @@ export default () => {
         <Button
           variant="secondary"
           className="p-5"
-          useFor="pagination"
           onClick={handleSubmitLoadMore}
         >
           Load More

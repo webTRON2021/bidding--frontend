@@ -4,7 +4,11 @@ import Bid from "../../models/Bids";
 import Heading from "../atoms/Heading";
 import BidCard from "../molecules/BidCard";
 
+
 export default () => {
+
+  
+
   const [bids, setBids] = useState<Bid[]>([]);
 
   //*Hooks
