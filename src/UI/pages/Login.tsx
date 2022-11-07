@@ -73,7 +73,7 @@ export default () => {
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={handleSubmit}
-        validationSchema={loginSchema}
+        // validationSchema={loginSchema}
       >
         {({ errors, values, handleChange, handleSubmit }) => {
           return (
