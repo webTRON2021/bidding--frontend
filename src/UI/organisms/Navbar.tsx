@@ -15,6 +15,10 @@ export default () => {
   const handleSubmitLogin = (e: any) => {
     navigate("/auth");
   }
+
+ const handleClickRegistration =()=>{
+  navigate("/auth/sign-up");
+ }
   return (
     <section className="navbar_section">
       <div className="container-fluid">
@@ -38,7 +42,9 @@ export default () => {
               >
                 Login
               </Button>
-              <Button variant="primary_white_outline" loading={false}>
+              <Button variant="primary_white_outline" loading={false}
+              onClick={handleClickRegistration}
+              >
                 Registration
               </Button>
             </div>
