@@ -41,7 +41,7 @@ const Login=() => {
     formData.append("password", data.password);
 
     const res = await login(formData);
-    console.log(res);
+    
     if (res.success) {
       toast.dismiss();
       toast.success(res.message);
