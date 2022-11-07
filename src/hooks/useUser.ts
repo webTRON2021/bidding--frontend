@@ -24,6 +24,26 @@ const useUser = () => {
         }
 
     }
+
+    const  findUsers = async (users:string[]): Promise<Response<User[]>> => {
+        try {
+            const response = await privateAxios.get(`/admin/users?users=${JSON.stringify(users)}`);
+            const fetchedUsers = User.plainToInstances(response.data.users)
+            const data: Response<User[]> = {
+                data: fetchedUsers,
+                error: null,
+            }
+            return data;
+        } catch (err: any) {
+            console.log(err);
+            const data: Response<User[]> = {
+                data: [],
+                error: err.response.data.message
+            }
+            return data;
+        }
+
+    }
     const updatePendingUserStatus = async (userID: string, body: FormData): Promise<Response<String>> => {
         try {
             await privateAxios.put(`/admin/change/user/verification/status/${userID}`, body, {
@@ -49,6 +69,7 @@ const useUser = () => {
 
     return {
         findPendingUsers,
+        findUsers,
         updatePendingUserStatus
     }
 
