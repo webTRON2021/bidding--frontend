@@ -29,6 +29,11 @@ const Navbar = () => {
   } 
 
 
+  }
+
+ const handleClickRegistration =()=>{
+  navigate("/auth/sign-up");
+ }
   return (
     <section className="navbar_section">
       <div className="container-fluid">
@@ -60,6 +65,18 @@ const Navbar = () => {
                   Sign out
                 </Button>
               </div>
+          <div className="">
+            <div className="d-flex gap-2">
+              <Button variant="primary" loading={false}
+              onClick={handleSubmitLogin}
+              >
+                Login
+              </Button>
+              <Button variant="primary_white_outline" loading={false}
+              onClick={handleClickRegistration}
+              >
+                Registration
+              </Button>
             </div>
           ) : (
             <div className="">

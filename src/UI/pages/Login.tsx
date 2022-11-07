@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { loginSchema } from "../../config/schema/LoginSchema";
 import useAuth from "../../hooks/useAuth";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
@@ -72,6 +73,7 @@ const Login=() => {
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={handleSubmit}
+        validationSchema={loginSchema}
       >
         {({ errors, values, handleChange, handleSubmit }) => {
           return (

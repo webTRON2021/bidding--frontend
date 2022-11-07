@@ -7,8 +7,10 @@ import Title from "../atoms/Title";
 import { TbUserCircle } from "react-icons/tb"
 import Textarea from "../atoms/Textarea";
 import Button from "../atoms/Button";
+import useScrollTop from '../../hooks/useScrollTop';
 
 export default () => {
+    useScrollTop();
     // function to handle submit form
     const submit = (e: any) => {
         e.preventDefault();

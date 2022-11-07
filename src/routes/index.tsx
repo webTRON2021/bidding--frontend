@@ -6,19 +6,26 @@ import Login from "../UI/pages/Login";
 import AuthTemplate from "../UI/templates/AuthTemplate";
 import Bids from "../UI/pages/Bids";
 import MainLayout from "../UI/templates/MainLayout";
+import AddProductForm from "../UI/molecules/AddProductForm";
+import SignUp from "../UI/atoms/SignUp";
+import PageNotFound from "../UI/pages/PageNotFound";
 export default () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/auth" element={<AuthTemplate />}>
-          <Route path="" element={<Login />} />{" "}
+          <Route path="" element={<Login />} />
+          <Route path="sign-up" element={<SignUp />} />
         </Route>
         <Route path="" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/bids" element={<Bids />} />
           <Route path="/product-details" element={<Details />} />
+          <Route path="/add-product" element={<AddProductForm />} />
         </Route>
+        {/* for 404 page not found page */}
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );
