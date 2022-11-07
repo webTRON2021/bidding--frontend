@@ -75,7 +75,7 @@ export default () => {
                     </div>
                 </div>
                 <div className="details_bids col-md-4 col-12">
-                    <DetailsRunningBids/>
+                    {/* <DetailsRunningBids/> */}
                 </div>
             </div>
         </div>
