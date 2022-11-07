@@ -6,6 +6,7 @@ export const SignUpSchema = Yup.object().shape({
     password: Yup.string().required(getRequiredText("password")),
     gender: Yup.string().required(getRequiredText(" gender ")),
     dob: Yup.string().required(getRequiredText("dob")),
+    email: Yup.string().required(getRequiredText("Email Address")),
     recoveryEmail: Yup.string().required(getRequiredText("recoveryEmail")),
     phone: Yup.string().required(getRequiredText("phone")),
     

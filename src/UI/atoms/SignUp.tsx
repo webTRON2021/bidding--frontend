@@ -1,14 +1,63 @@
 import { Formik } from "formik";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { AddProductSchema } from "../../config/schema/AddProductSchema";
 import Input from "../atoms/Input";
 import Textarea from "../atoms/Textarea";
-import { SignUpSchema } from '../../config/schema/SignUpSchema';
+import { SignUpSchema } from "../../config/schema/SignUpSchema";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Button from "./Button";
+import { toast } from "react-toastify";
+
+type data = {
+  firstName: string;
+  lastName: string;
+  password: string;
+  gender: string;
+  dob: string;
+  recoveryEmail: string;
+  email: string;
+  phone: string;
+};
 
 export default () => {
-  const handleSubmit = () => {
-    console.log("This is sign up");
+  // hooks
+  const { signup, setUser } = useAuth();
+
+  //use for navigate
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  // function to submit form
+  const handleSubmit = async (data: data) => {
+    // make the login button loading
+    setLoading(true);
+
+    const formData = new FormData();
+    formData.append("firstname", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("password", data.password);
+    formData.append("gender", data.gender);
+    formData.append("dob", data.dob);
+    formData.append("recoveryEmail", data.recoveryEmail);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+
+    const res = await signup(formData);
+
+    if (res.success) {
+      toast.dismiss();
+      toast.success(res.message);
+      navigate("/");
+    } else{
+      toast.dismiss();
+      toast.error(res.message[0]);
+    }
+
+    // stop loading
+    setLoading(false);
   };
   return (
     <section className="signUp_section">
@@ -19,6 +68,7 @@ export default () => {
           password: "",
           gender: "",
           dob: "",
+          email: "",
           recoveryEmail: "",
           phone: "",
         }}
@@ -62,6 +112,21 @@ export default () => {
                       {errors.lastName}
                     </small>
                   </div>
+
+                  <div className="col-md-4 col-sm-6 col-12 mb-4">
+                    <Input
+                      type="email"
+                      placeholder="Email Address"
+                      error={errors.email === undefined ? false : true}
+                      onChange={handleChange}
+                      name="email"
+                      value={values.email}
+                    ></Input>
+                    <small className="input_suggestion_error">
+                      {errors.email}
+                    </small>
+                  </div>
+
                   <div className="col-md-4 col-sm-6 col-12 mb-4">
                     <Input
                       variant="password"
@@ -130,18 +195,8 @@ export default () => {
 
                   <div className="py-1"></div>
                   <div className="d-flex justify-content-end gap-3">
-                    {/* <Button
-                    variant="primary_outline"
-                    loading={loadingDraft}
-                    type="button"
-                    onClick={() => {
-                      handleDraft(values);
-                    }}
-                  >
-                    Draft
-                  </Button> */}
                     <Button
-                      //   loading={loading}
+                      loading={loading}
                       type="submit"
                       //   onClick={handleActiveValidation}
                     >
