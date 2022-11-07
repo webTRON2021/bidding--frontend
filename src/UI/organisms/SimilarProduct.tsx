@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 import useBid from "../../hooks/useBid";
-import Bid from "../../models/Bids";
+import Bid from "../../models/Bid";
 import Heading from "../atoms/Heading";
 import CardOne from "../molecules/BidCard";
 
@@ -32,7 +32,7 @@ export default () => {
   return (
     <section className="similar_product_section">
       <div className="container">
-        <Heading text="Similar Product for your" />
+        <Heading text="Similar bids for you" />
         <div className="row pt-3">
           {bids?.map((bid, index) => {
             return (

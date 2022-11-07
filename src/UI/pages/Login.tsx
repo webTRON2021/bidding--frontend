@@ -14,7 +14,7 @@ type data = {
   password: string;
 };
 
-export default () => {
+const Login=() => {
   const {
     login,
     user,
@@ -55,7 +55,7 @@ export default () => {
       // encrypt
       var encryptedPassword = CryptoJS.AES.encrypt(
         JSON.stringify(data.password),
-        "#JeewanMeroNaam",
+        "#webTRON",
         { outputLength: 224 }
       ).toString();
       setRememberMeData({ email: data.email, Password: encryptedPassword });
@@ -140,3 +140,6 @@ export default () => {
     </section>
   );
 };
+
+
+export default Login;

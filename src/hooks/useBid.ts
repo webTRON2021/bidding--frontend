@@ -1,5 +1,5 @@
 import PrivateAxios from "../api/PrivateAxios";
-import Bid from "../models/Bids";
+import Bid from "../models/Bid";
 import Response from "../types/response";
 
 const useBid = () => {
@@ -46,6 +46,31 @@ const useBid = () => {
       return data;
     }
   };
+  
+  const postBidToken = async (
+    body: FormData
+  ): Promise<Response<String>> => {
+    try {
+      await PrivateAxios.post(`/client/bid/token`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const data = {
+        data: "Bid placed successfully",
+        error: null,
+      };
+      return data;
+    } catch (err: any) {
+      console.log(err);
+      const data = {
+        data: null,
+        error: err.response.data.message,
+      };
+      return data;
+    }
+  };
+
 
   return {
     findBids,

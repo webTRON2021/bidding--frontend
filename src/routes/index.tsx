@@ -4,7 +4,7 @@ import Details from "../UI/pages/Details";
 import Home from "../UI/pages/Home";
 import Login from "../UI/pages/Login";
 import AuthTemplate from "../UI/templates/AuthTemplate";
-import Product from "../UI/pages/Product";
+import Bids from "../UI/pages/Bids";
 import MainLayout from "../UI/templates/MainLayout";
 export default () => {
   return (
@@ -16,7 +16,7 @@ export default () => {
         <Route path="" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/products" element={<Product />} />
+          <Route path="/bids" element={<Bids />} />
           <Route path="/product-details" element={<Details />} />
         </Route>
       </Routes>

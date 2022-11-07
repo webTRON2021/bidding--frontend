@@ -3,7 +3,6 @@ import Creative from "./Creative";
 
 class Meta {
     highestToken: HighestToken;
-
     constructor(highestToken: HighestToken) {
         this.highestToken = highestToken;
     }
@@ -22,9 +21,7 @@ class HighestToken {
 
 
 
-class Products {
-
-    
+class Bid {
     _id: string;
     statusMessage: string;
     initialToken: string;
@@ -44,7 +41,6 @@ class Products {
 
     constructor(
         id: string,
-        
         statusMessage: string,
         initialToken: string,
         endDate: Date,
@@ -62,7 +58,6 @@ class Products {
         name: string
     ) {
         this._id = id
-        
         this.statusMessage = statusMessage
         this.initialToken = initialToken
         this.endDate = endDate
@@ -80,12 +75,12 @@ class Products {
         this.name = name
     }
 
-    static plainToInstance(plainData: object): Products {
-        return plainToClass(Products, plainData);
+    static plainToInstance(plainData: object): Bid {
+        return plainToClass(Bid, plainData);
     }
-    static plainToInstances(plainData: object[]): Products[] {
-        return plainToClass(Products, plainData);
+    static plainToInstances(plainData: object[]): Bid[] {
+        return plainToClass(Bid, plainData);
     }
 }
 
-export default Products;
+export default Bid;

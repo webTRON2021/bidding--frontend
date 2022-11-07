@@ -6,9 +6,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: string;
   error?: boolean;
   label?:string;
+  ref?:any
 }
 
-export default ({ icon, children, variant, ...rest }: InputProps) => {
+export default ({ icon, children, variant,ref ,...rest }: InputProps) => {
   // state for store password
   const [showPassword, setShowPassword] = useState<boolean>(true);
 
@@ -21,7 +22,7 @@ export default ({ icon, children, variant, ...rest }: InputProps) => {
       {variant === "password" ? (
         <div className="input_box">
           <div className="icon">{icon}</div>
-          <input type={showPassword ? "password" : "text"} {...rest} />
+          <input type={showPassword ? "password" : "text"} {...rest} ref={ref} />
           <div className="icon" onClick={togglePassword}>
             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
           </div>

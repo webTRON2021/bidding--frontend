@@ -10,7 +10,7 @@ interface Props {
 export const AuthContext = createContext<any>(null);
 
 // auth provider
-export default ({ children }: Props) => {
+const AuthProvider= ({ children }: Props) => {
   let userData;
 
   try {
@@ -39,7 +39,13 @@ export default ({ children }: Props) => {
   const login = async (data:FormData) => {
     try {
       const res = await AxiosInstance.post("/client/auth/login", data);
-      setUser(user);
+
+      // *Decrypt the token and set the user
+      const payload = JSON.parse(atob(res.data.token.split(".")[1]));
+      setUser({
+        ...res.data,
+        ...payload,
+      });
       return {
         success: true,
         message: res.data.message,
@@ -71,3 +77,5 @@ export default ({ children }: Props) => {
     </AuthContext.Provider>
   );
 };
+
+export default AuthProvider;

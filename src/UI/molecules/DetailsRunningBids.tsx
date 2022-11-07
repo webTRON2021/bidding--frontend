@@ -6,7 +6,7 @@ import { db } from "../../config/dbConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import "firebase/firestore";
 import { useEffect, useState } from "react";
-import Bid from "../../models/Bids";
+import Bid from "../../models/Bid";
 
 export default () => {
   const location = useLocation();

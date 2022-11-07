@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Images from "../../config/constant/Images";
 import Button from "../atoms/Button";
 import Title from "../atoms/Title";
-import Bid from '../../models/Bids';
+import Bid from '../../models/Bid';
 import useBid from '../../hooks/useBid';
 
 interface IProps{
@@ -21,7 +21,7 @@ export default (props:IProps) => {
       <div className="row">
         <div className="col-md-4 col-12">
           <div className="cover_image">
-            <img src={bid?.creative[0].filename} alt="product" />
+            <img src={bid?.creative[0].src} alt="product" />
           </div>
         </div>
         <div className="col-md-8 col-12">
