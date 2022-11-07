@@ -41,6 +41,7 @@ const Login=() => {
     formData.append("password", data.password);
 
     const res = await login(formData);
+    console.log(res);
     if (res.success) {
       toast.dismiss();
       toast.success(res.message);
@@ -48,7 +49,7 @@ const Login=() => {
 
     } else {
       toast.dismiss();
-      toast.error(res.message);
+      toast.error(res.message[0]);
     }
 
     // if remember me check is checked then store email and password on local
