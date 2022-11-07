@@ -17,6 +17,7 @@ type data = {
 export default () => {
   const {
     login,
+    user,
     rememberMe,
     setRememberMe,
     rememberMeData,
@@ -42,8 +43,8 @@ export default () => {
     if (res.success) {
       toast.dismiss();
       toast.success(res.message);
-
       navigate("/");
+
     } else {
       toast.dismiss();
       toast.error(res.message);
@@ -54,7 +55,7 @@ export default () => {
       // encrypt
       var encryptedPassword = CryptoJS.AES.encrypt(
         JSON.stringify(data.password),
-        "#Cliff",
+        "#JeewanMeroNaam",
         { outputLength: 224 }
       ).toString();
       setRememberMeData({ email: data.email, Password: encryptedPassword });
