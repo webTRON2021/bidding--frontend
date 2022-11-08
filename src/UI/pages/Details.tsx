@@ -12,13 +12,9 @@ import payment from "../../config/khalti";
 import useScrollTop from "../../hooks/useScrollTop";
 import useBid from "../../hooks/useBid";
 import { toast } from "react-toastify";
-<<<<<<< HEAD
-import DetailsRunningBids from "../molecules/DetailsRunningBids";
-=======
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Alert from "../atoms/Alert";
->>>>>>> 0cc7f881a2e9eaf070a3ad4d0d5d7c885f54cf79
 
 const Details = () => {
   const location = useLocation();
