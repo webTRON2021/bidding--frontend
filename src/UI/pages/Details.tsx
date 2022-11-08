@@ -23,10 +23,12 @@ const Details = () => {
 
   const { user } = useAuth();
 
-  // * Define state to store user details
-  const [isVerifiedProfile, setIsVerifiedProfile] = useState(
-    user?.info?.status === "UNVERIFIED" ? false : true
-  );
+const [isVerifiedProfile, setIsVerifiedProfile] = useState(
+  user ? (user?.info?.status === "UNVERIFIED" ? false : true) : false
+);
+
+  
+  console.log(isVerifiedProfile);
 
   useScrollTop();
 
