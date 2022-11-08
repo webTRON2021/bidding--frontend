@@ -12,12 +12,25 @@ import payment from "../../config/khalti";
 import useScrollTop from "../../hooks/useScrollTop";
 import useBid from "../../hooks/useBid";
 import { toast } from "react-toastify";
+<<<<<<< HEAD
 import DetailsRunningBids from "../molecules/DetailsRunningBids";
+=======
+import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import Alert from "../atoms/Alert";
+>>>>>>> 0cc7f881a2e9eaf070a3ad4d0d5d7c885f54cf79
 
 const Details = () => {
   const location = useLocation();
   const bid: Bid = location.state;
   const { postBidToken } = useBid();
+
+  const { user } = useAuth();
+
+  // * Define state to store user details
+  const [isVerifiedProfile, setIsVerifiedProfile] = useState(
+    user?.info?.status === "UNVERIFIED" ? false : true
+  );
 
   useScrollTop();
 
@@ -31,7 +44,6 @@ const Details = () => {
     Images.visacard,
   ];
 
-  console.log(bid);
   const placeBidHandler = () => {
     // ! Do not use this approach in production
     const bidAmount = document.getElementById("bidAmount") as HTMLInputElement;
@@ -47,12 +59,8 @@ const Details = () => {
         body.append("transactionId", payload.token);
         body.append("bidId", bid._id);
         body.append("amount", bidAmountValue);
-        
-        console.log(payload);
-        console.log(JSON.stringify(body));
 
         postBidToken(body).then((response) => {
-          console.log(response);
           if (!response.error) {
             toast.error("Bid placed successfully");
           } else {
@@ -73,6 +81,7 @@ const Details = () => {
 
   return (
     <section className="details_page_section py-4">
+      {!isVerifiedProfile && <Alert/>}
       <div className="container">
         <div className="row">
           <div className="col-md-3 col-12">
@@ -100,16 +109,18 @@ const Details = () => {
                       {bid.tokenCurrency}:{bid.initialToken}
                     </span>
                   </div>
-                  <div className="pt-2 d-flex gap-2">
-                    <div className="w-25">
-                      <Input
-                        type="number"
-                        icon={<TbCurrencyDollar />}
-                        id="bidAmount"
-                      />
+                  {isVerifiedProfile && (
+                    <div className="pt-2 d-flex gap-2">
+                      <div className="w-25">
+                        <Input
+                          type="number"
+                          icon={<TbCurrencyDollar />}
+                          id="bidAmount"
+                        />
+                      </div>
+                      <Button onClick={placeBidHandler}>Place Bid</Button>
                     </div>
-                    <Button onClick={placeBidHandler}>Place Bid</Button>
-                  </div>
+                  )}
                   <div className="pt-1">
                     {" "}
                     minimum increment (Nrp:{bid.minimumTokenRaise})

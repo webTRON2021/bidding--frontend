@@ -56,5 +56,17 @@
         }
       }
     }
+
+
+    .user_profile_icon{
+
+      button{
+        border-radius: 21px;
+      }
+      svg{
+        width: 32px;
+        height: 25px;
+      }
+    }
   }
 }

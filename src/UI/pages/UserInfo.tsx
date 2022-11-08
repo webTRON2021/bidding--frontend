@@ -7,8 +7,6 @@ import Button from "../atoms/Button";
 
 const UserInfo = () => {
   const { user,setUser } = useAuth();
-
-
   const [isEmailVerifying,setIsEmailVerifying] = useState(false);
   const [isTokenVerifying,setIsTokenVerifying] = useState(false);
   const [isMediaUploading,setIsMediaUploading] = useState(false);
@@ -84,10 +82,7 @@ const UserInfo = () => {
       <section className="userinfo_section">
         <div className="container">
           <div className="row d-flex justify-content-between align-items-center">
-            <div className="col-lg-4 col-md-8 col-12 user_image">
-              <img src={Images.logo} alt="logo" />
-              <div className="user_status">Status: {user?.info?.status}</div>
-            </div>
+           
             <div className="col-lg-8 col-md-8 col-12 user_details">
               <div className="row user_info">
                 <div className="col-6 my-1">
@@ -97,20 +92,27 @@ const UserInfo = () => {
                 <div className="col-6 my-2">Sex: {user?.info?.gender}</div>
                 <div className=" col-6">DOB: {user?.info?.dob}</div>
                 <div className="col-6">
+                  Email: {user?.info?.email}
+                </div>
+                <div className="col-6">
                   RecoveryEmail: {user?.info?.recoveryEmail}
                 </div>
               </div>
             </div>
+            <div className="col-lg-4 col-md-8 col-12 user_image">
+              <img src={Images.logo} alt="logo" />
+              <div className="user_status">Status: {user?.info?.status}</div>
+            </div>
             {!isEmailVerified ? (
               <section className="email-verification-status mt-2">
-                <div className="d-flex">
-                  <h2 className="me-2">Verify Email</h2>
+                <div className="d-flex justify-content-center align-items-center flex-column ">
+                  <div className="me-2 verify_email">Verify Email</div>
                   {!showEmailInput && (
                     <Button onClick={handleEmailVerification} loading={isEmailVerifying}>Verify</Button>
                   )}
                 </div>
                 {showEmailInput && (
-                  <div className="d-flex">
+                  <div className="d-flex justify-content-center">
                     <input
                       type="text"
                       value={otpCode}
@@ -125,10 +127,10 @@ const UserInfo = () => {
             ) : null}
             {showMediaUpload && (
               <section className="media-upload-status mt-2">
-                <h5 className="">Upload Media</h5>
+                <h5 className="pb-4">Upload Media</h5>
                 <div className="d-flex">
                   <div>
-                    <label htmlFor="pwi">Photo With ID</label>
+                    <label htmlFor="pwi" className="px-1"><b>Photo With ID</b></label>
                     <input
                       type="file"
                       id="pwi"
@@ -140,7 +142,7 @@ const UserInfo = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="id">ID Card</label>
+                    <label htmlFor="id" className="px-1"> <b> ID Card </b></label>
                     <input
                       type="file"
                       id="id"

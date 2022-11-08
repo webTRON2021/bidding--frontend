@@ -49,11 +49,36 @@ const useBid = () => {
       return data;
     }
   };
+  const postBid = async (
+    body: FormData
+  ): Promise<Response<String>> => {
+    console.log("postBid",body);
+    try {
+      await PrivateAxios.post(`/client/bid`,body, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const data = {
+        data: "Bid is placed for approval",
+        error: null,
+      };
+      return data;
+    } catch (err: any) {
+      console.log(err);
+      const data = {
+        data: null,
+        error: err.response.data.message,
+      };
+      return data;
+    }
+  };
 
 
   return {
     findBids,
-    postBidToken
+    postBidToken,
+    postBid
   };
 };
 

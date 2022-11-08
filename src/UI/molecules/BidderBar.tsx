@@ -22,7 +22,6 @@ const BidderBar = (props: any) => {
 		})();
 	}, []);
 
-	console.log(bidderInfo);
 	return (
 		<>
 			<div className='d-flex justify-content-between align-items-center mb-2 details_bids_user'>
