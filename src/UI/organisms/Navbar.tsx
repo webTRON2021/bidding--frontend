@@ -5,6 +5,7 @@ import Images from "../../config/constant/Images";
 import Form from "react-bootstrap/Form";
 import { useNavigate, Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ const Navbar = () => {
 
   console.log(user);
 
+  const handleUserinfo = () => {
+    
+    navigate("/user-info");
+  };
   const handleSignOut = () => {
     setUser(null);
     navigate("/");
@@ -52,14 +57,27 @@ const Navbar = () => {
           </Form>
           {user?.token ? (
             <div className="">
-              <div className="d-flex gap-2">
+              <div className="d-flex gap-4">
+                <div className="user_profile_icon">
+              <Button
+                  variant="primary"
+                  loading={false}
+                  onClick={handleUserinfo}
+                  >
+                  <FaUserCircle />
+                </Button>
+                    </div>
+                  <div>
+  
                 <Button
                   variant="primary"
                   loading={false}
                   onClick={handleSignOut}
-                >
+                  >
                   Sign out
                 </Button>
+                  </div>
+                
               </div>
             </div>
           ) : (
@@ -72,8 +90,10 @@ const Navbar = () => {
                 >
                   Login
                 </Button>
-                <Button variant="primary_white_outline" loading={false}
-                onClick={handleClickRegistration}
+                <Button
+                  variant="primary_white_outline"
+                  loading={false}
+                  onClick={handleClickRegistration}
                 >
                   Registration
                 </Button>
