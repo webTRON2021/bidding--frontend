@@ -28,13 +28,8 @@ export default () => {
     formData.append("specification", values.specification);
     formData.append("startDate", values.startDate);
     formData.append("tokenCurrency", values.tokenCurrency);
-    // formData.append("bidProductImage", images)
 
-    console.log(images);
-    console.log(Array(images?.length));
-    
     Array(images).forEach((_,index)=>{
-      console.log(index);
       formData.append("bidProductImage", images?.item(index)!)
     })
 
