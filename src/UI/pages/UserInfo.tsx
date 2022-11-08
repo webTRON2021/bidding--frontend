@@ -6,20 +6,19 @@ import useUser from "../../hooks/useUser";
 import Button from "../atoms/Button";
 
 const UserInfo = () => {
-  const { user,setUser } = useAuth();
-  const [isEmailVerifying,setIsEmailVerifying] = useState(false);
-  const [isTokenVerifying,setIsTokenVerifying] = useState(false);
-  const [isMediaUploading,setIsMediaUploading] = useState(false);
+  const { user, setUser } = useAuth();
+  const [isEmailVerifying, setIsEmailVerifying] = useState(false);
+  const [isTokenVerifying, setIsTokenVerifying] = useState(false);
+  const [isMediaUploading, setIsMediaUploading] = useState(false);
 
   const [showEmailInput, setShowEmailInput] = useState(false);
   const [showMediaUpload, setShowMediaUpload] = useState(false);
 
-
   //   *State to hold user status
   const [userStatus, setUserStatus] = useState(user.info.status);
- 
+
   const [otpCode, setOtpCode] = useState("");
-  console.log("IS medai",user.info.status==="UNVERIFIED");
+  console.log("IS medai", user.info.status === "UNVERIFIED");
   const [isEmailVerified, setIsEmailVerified] = useState(
     user.info.status === "VERIFIED"
   );
@@ -72,17 +71,17 @@ const UserInfo = () => {
       setIsMediaUploaded(true);
       setShowMediaUpload(false);
       // Update Status
-      setUser({...user,info:{...user.info,status:"UNDER_REVIEW"}});
+      setUser({ ...user, info: { ...user.info, status: "UNDER_REVIEW" } });
     }
     setIsMediaUploading(false);
   };
 
+  console.table("Pramesh", user);
   return (
     <>
       <section className="userinfo_section">
         <div className="container">
           <div className="row d-flex justify-content-between align-items-center">
-           
             <div className="col-lg-8 col-md-8 col-12 user_details">
               <div className="row user_info">
                 <div className="col-6 my-1">
@@ -91,9 +90,7 @@ const UserInfo = () => {
                 <div className="col-6">LastName: {user?.info?.lastName}</div>
                 <div className="col-6 my-2">Sex: {user?.info?.gender}</div>
                 <div className=" col-6">DOB: {user?.info?.dob}</div>
-                <div className="col-6">
-                  Email: {user?.info?.email}
-                </div>
+                <div className="col-6">Email: {user?.info?.email}</div>
                 <div className="col-6">
                   RecoveryEmail: {user?.info?.recoveryEmail}
                 </div>
@@ -108,7 +105,12 @@ const UserInfo = () => {
                 <div className="d-flex justify-content-center align-items-center flex-column ">
                   <div className="me-2 verify_email">Verify Email</div>
                   {!showEmailInput && (
-                    <Button onClick={handleEmailVerification} loading={isEmailVerifying}>Verify</Button>
+                    <Button
+                      onClick={handleEmailVerification}
+                      loading={isEmailVerifying}
+                    >
+                      Verify
+                    </Button>
                   )}
                 </div>
                 {showEmailInput && (
@@ -120,7 +122,9 @@ const UserInfo = () => {
                         setOtpCode(e.target.value);
                       }}
                     />
-                    <Button onClick={handleOTP} loading={isTokenVerifying}>Submit</Button>
+                    <Button onClick={handleOTP} loading={isTokenVerifying}>
+                      Submit
+                    </Button>
                   </div>
                 )}
               </section>
@@ -130,7 +134,9 @@ const UserInfo = () => {
                 <h5 className="pb-4">Upload Media</h5>
                 <div className="d-flex">
                   <div>
-                    <label htmlFor="pwi" className="px-1"><b>Photo With ID</b></label>
+                    <label htmlFor="pwi" className="px-1">
+                      <b>Photo With ID</b>
+                    </label>
                     <input
                       type="file"
                       id="pwi"
@@ -142,7 +148,10 @@ const UserInfo = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="id" className="px-1"> <b> ID Card </b></label>
+                    <label htmlFor="id" className="px-1">
+                      {" "}
+                      <b> ID Card </b>
+                    </label>
                     <input
                       type="file"
                       id="id"
@@ -153,7 +162,9 @@ const UserInfo = () => {
                       }}
                     />
                   </div>
-                  <Button onClick={handleUpload} loading={isMediaUploading}>Submit</Button>
+                  <Button onClick={handleUpload} loading={isMediaUploading}>
+                    Submit
+                  </Button>
                 </div>
               </section>
             )}
