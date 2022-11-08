@@ -121,7 +121,7 @@ const Login=() => {
                     </label>
                   </div>
                   <div className="remember_me forgetPassword">
-                    <Link to="/verify-email">Forget Password ?</Link>
+                    <Link to="/auth/sign-up">Do not have an account ?</Link>
                   </div>
                 </div>
 
