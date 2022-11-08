@@ -49,7 +49,7 @@ export default () => {
 
     if (res.success) {
       toast.dismiss();
-      toast.success(res.message);
+      toast.success("Sign up successfully");
       navigate("/");
     } else{
       toast.dismiss();
