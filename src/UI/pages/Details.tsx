@@ -59,7 +59,7 @@ const Details = () => {
 
 				postBidToken(body).then((response) => {
 					if (!response.error) {
-						toast.error("Bid placed successfully");
+						toast.success("Bid placed successfully");
 					} else {
 						toast.error(response.error);
 					}
