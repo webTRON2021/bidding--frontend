@@ -167,14 +167,20 @@ export default () => {
                     </small>
                   </div>
                   <div className="col-md-4 col-sm-6 col-12 mb-4">
-                    <Input
+                    {/* <Input
                       type="text"
                       placeholder="gender"
                       error={errors.gender === undefined ? false : true}
                       onChange={handleChange}
                       name="gender"
                       value={values.gender}
-                    ></Input>
+                      ></Input> */}
+                    <label htmlFor="gender">Gender</label>
+                    <select name="gender" id="gender" onChange={handleChange}>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="custom">Custom</option>
+                    </select>
                     <small className="input_suggestion_error">
                       {errors.gender}
                     </small>
