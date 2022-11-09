@@ -1,13 +1,14 @@
 import PrivateAxios from "../api/PrivateAxios";
-import Bid from "../models/Bids";
+import axios from "../api/index";
+import Bid from "../models/Bid";
 import Response from "../types/response";
 
 const useBid = () => {
   const findBids = async (): Promise<Response<Bid[]>> => {
     try {
       console.log("/admin/bid");
-      const response = await PrivateAxios.get("/admin/bid");
-      const bids = Bid.plainToInstances(response.data.bids);
+      const response = await axios.get("/client/bid/active");
+      const bids = Bid.plainToInstances(response.data.activeBids);
       const data: Response<Bid[]> = {
         data: bids,
         error: null,
@@ -22,18 +23,44 @@ const useBid = () => {
       return data;
     }
   };
-  const updateBidStatus = async (
-    bidID: string,
+  
+  
+  const postBidToken = async (
     body: FormData
   ): Promise<Response<String>> => {
+    console.log("postBidToken",body);
     try {
-      await PrivateAxios.put(`/admin/bid/update/status/${bidID}`, body, {
+      await PrivateAxios.post(`/client/bid/token`,body, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
       const data = {
-        data: "Bid status updated successfully",
+        data: "Bid placed successfully",
+        error: null,
+      };
+      return data;
+    } catch (err: any) {
+      console.log(err);
+      const data = {
+        data: null,
+        error: err.response.data.message,
+      };
+      return data;
+    }
+  };
+  const postBid = async (
+    body: FormData
+  ): Promise<Response<String>> => {
+    console.log("postBid",body);
+    try {
+      await PrivateAxios.post(`/client/bid`,body, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const data = {
+        data: "Bid is placed for approval",
         error: null,
       };
       return data;
@@ -47,9 +74,11 @@ const useBid = () => {
     }
   };
 
+
   return {
     findBids,
-    updateBidStatus,
+    postBidToken,
+    postBid
   };
 };
 

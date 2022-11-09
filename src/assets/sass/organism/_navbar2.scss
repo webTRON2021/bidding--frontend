@@ -1,0 +1,72 @@
+
+
+.navbar_section{
+    z-index: 999;
+    
+    left: 0px;
+    right: 0px;
+    top: 40px;
+    color: #fff!important;
+
+
+    
+    .nav-link{
+        color: #fff !important;
+        margin-left: 1.3rem;
+        // flex: inherit;
+
+        &:hover{
+            color:$primary-color !important;
+        }
+    }
+
+
+
+    // overriding the bootstrap styling
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+}
+    
+
+
+
+    // overriding the bootstrap css
+
+
+       
+
+.btn-close:focus {
+    box-shadow: none !important;
+}
+
+.logo_offcanvas {
+    img {
+        width: 200px;
+    }
+}
+
+
+
+
+
+    .nav-link{
+        color: #000 !important;
+    }
+
+
+
+@media  screen and (max-width:768px) {
+
+    
+
+.navbar_section{
+    top:0px;
+    background-color: #fff;
+}
+}
+
+
+.nav-link.active{
+    color: $primary-color !important;
+}

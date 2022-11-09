@@ -3,7 +3,6 @@ import Creative from "./Creative";
 
 class Meta {
     highestToken: HighestToken;
-
     constructor(highestToken: HighestToken) {
         this.highestToken = highestToken;
     }
@@ -23,8 +22,6 @@ class HighestToken {
 
 
 class Bid {
-
-
     _id: string;
     statusMessage: string;
     initialToken: string;

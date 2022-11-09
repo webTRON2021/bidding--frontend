@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { loginSchema } from "../../config/schema/LoginSchema";
 import useAuth from "../../hooks/useAuth";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
@@ -14,9 +15,10 @@ type data = {
   password: string;
 };
 
-export default () => {
+const Login=() => {
   const {
     login,
+    user,
     rememberMe,
     setRememberMe,
     rememberMeData,
@@ -39,11 +41,12 @@ export default () => {
     formData.append("password", data.password);
 
     const res = await login(formData);
+    
     if (res.success) {
       toast.dismiss();
       toast.success(res.message);
-
       navigate("/");
+
     } else {
       toast.dismiss();
       toast.error(res.message);
@@ -54,7 +57,7 @@ export default () => {
       // encrypt
       var encryptedPassword = CryptoJS.AES.encrypt(
         JSON.stringify(data.password),
-        "#Cliff",
+        "#webTRON",
         { outputLength: 224 }
       ).toString();
       setRememberMeData({ email: data.email, Password: encryptedPassword });
@@ -71,6 +74,7 @@ export default () => {
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={handleSubmit}
+        // validationSchema={loginSchema}
       >
         {({ errors, values, handleChange, handleSubmit }) => {
           return (
@@ -117,7 +121,7 @@ export default () => {
                     </label>
                   </div>
                   <div className="remember_me forgetPassword">
-                    <Link to="/verify-email">Forget Password ?</Link>
+                    <Link to="/auth/sign-up">Do not have an account ?</Link>
                   </div>
                 </div>
 
@@ -139,3 +143,6 @@ export default () => {
     </section>
   );
 };
+
+
+export default Login;

@@ -1,22 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Images from "../../config/constant/Images";
 import Button from "../atoms/Button";
 import Title from "../atoms/Title";
-import Bid from '../../models/Bids';
+import Bid from '../../models/Bid';
 import useBid from '../../hooks/useBid';
 
 interface IProps{
-  bid?:Bid
+  bid?:Bid;
 }
 
 export default (props:IProps) => {
   const {bid}=props;
+  const navigate = useNavigate();
+
+  const handleViewDetails=()=>{
+    navigate("/product-details", {state:bid!});
+  }
   return (
     <section className="card mb-3">
       <div className="row">
         <div className="col-md-4 col-12">
           <div className="cover_image">
-            <img src={bid?.creative[0].filename} alt="product" />
+            <img src={bid?.creative[0].src} alt="product" />
           </div>
         </div>
         <div className="col-md-8 col-12">
@@ -37,9 +42,11 @@ export default (props:IProps) => {
               </div>
             </div>
             <div className="py-1"></div>
-            <Link to="/product-details">
-              <Button>View Details</Button>
-            </Link>
+            
+              <Button
+              onClick={handleViewDetails}
+              >View Details</Button>
+            
           </div>
         </div>
       </div>

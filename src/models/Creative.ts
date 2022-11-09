@@ -1,13 +1,13 @@
 class Creative {
     caption: string;
     alt: string;
-    filename: string;
+    src: string;
     mimetype: string;
 
-    constructor(caption: string, alt: string, filename: string, mimetype: string) {
+    constructor(caption: string, alt: string, src: string, mimetype: string) {
         this.caption = caption
         this.alt = alt
-        this.filename = filename
+        this.src = src
         this.mimetype = mimetype
     }
 }
