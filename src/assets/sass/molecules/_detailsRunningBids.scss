@@ -1,34 +1,37 @@
 .details_bids {
-	position: relative;
-	border: 0.2rem solid black;
-	padding: 0.5rem 1rem;
-	.detailsRunningBids_section {
-		.title_text {
-			font-size: 1.1rem !important;
-		}
+  position: relative;
+  border: 0.2rem solid #d6d6d6;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  .detailsRunningBids_section {
+    .title_text {
+      font-size: 1.1rem !important;
+      height: auto;
+    }
 
-		svg {
-			height: 18px;
-			width: 100%;
-			padding-right: 0.3rem;
-		}
+    svg {
+      height: 18px;
+      width: 100%;
+      padding-right: 0.3rem;
+    }
 
-		.details_bids_user {
-			border: 1px dashed black;
-			padding: 0.2rem 1rem;
-		}
+    .details_bids_user {
+      border: 1px dashed rgb(192, 191, 191);
+      border-radius: 12px;
+      padding: 0.2rem 1rem;
+    }
 
-		.highest_bid_currency {
-			position: absolute;
-			bottom: 14px;
-			width: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: space-around;
-		}
+    .highest_bid_currency {
+      position: absolute;
+      bottom: 14px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
 
-		.currency {
-			font-size: 14px !important;
-		}
-	}
+    .currency {
+      font-size: 14px !important;
+    }
+  }
 }
