@@ -24,11 +24,11 @@ const Navbar = () => {
   console.log(user);
 
   const handleUserinfo = () => {
-    
     navigate("/user-info");
   };
   const handleSignOut = () => {
     setUser(null);
+    localStorage.removeItem("user");
     navigate("/");
   };
 
@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link to="/">
             <div className="logo">
               <img src={Images.logo} alt="logo" />
-              <div className="title">Tinjure Auction</div>
+              <div className="title">Tripod Auction</div>
             </div>
           </Link>
           <Form
@@ -59,25 +59,23 @@ const Navbar = () => {
             <div className="">
               <div className="d-flex gap-4">
                 <div className="user_profile_icon">
-              <Button
-                  variant="primary"
-                  loading={false}
-                  onClick={handleUserinfo}
+                  <Button
+                    variant="primary"
+                    loading={false}
+                    onClick={handleUserinfo}
                   >
-                  <FaUserCircle />
-                </Button>
-                    </div>
-                  <div>
-  
-                <Button
-                  variant="primary"
-                  loading={false}
-                  onClick={handleSignOut}
+                    <FaUserCircle />
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    variant="primary"
+                    loading={false}
+                    onClick={handleSignOut}
                   >
-                  Sign out
-                </Button>
-                  </div>
-                
+                    Sign out
+                  </Button>
+                </div>
               </div>
             </div>
           ) : (

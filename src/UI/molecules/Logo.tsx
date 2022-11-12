@@ -5,9 +5,8 @@ export default () => {
     <section className="logo_section">
       <div className="logo">
         <img src={image.logo} alt="logo" />
-        Tinjure Supplier Auction
+        Tripod Auction
       </div>
-      
     </section>
   );
 };
