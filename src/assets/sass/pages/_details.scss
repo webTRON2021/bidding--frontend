@@ -23,6 +23,7 @@
             padding-top: 1rem;
 
             .item {
+                
                 padding-bottom: .5rem;
             }
 
@@ -45,6 +46,14 @@
                     object-fit: cover;
                 }
             }
+        }
+    }
+
+
+    .timer__container{
+        span{
+            font-size: 20px;
+            font-weight: 600;
         }
     }
 
